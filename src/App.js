@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Banner from "./components/banner";
+import Model from "./components/model";
+import MarkdownContext from "./markdownContext";
+import { bannerFields } from "./models/bannerFields";
+import GlobalStyle from "./styles/GlobalStyle";
+
+const markdownText = bannerFields.map((field, i)=> {
+  if(field.functional === ":no_entry:"){
+    field.orientation = "Não utilizado"
+  }
+  return (
+  `| **${field.label}**    | ${field.functional}  |  ${field.orientation}|`)
+}).join('\r\n');
+
+const markdownBanner = `
+| Dúvida                          | Instrução                                                        |
+| ------------------------------- | ---------------------------------------------------------------- |
+| **Onde cadastrar**              | Banners                                                          |
+| **Onde será exibido**           | Banner principal abaixo do header, ocupa 100% da largura da tela |
+| **Cadastro exemplo em staging** | [Admin](#) / [Página](#)   
+
+| Campo         | Funcional?          | Orientação                                             |
+| ------------- | ------------------- | ------------------------------------------------------ |
+${markdownText}
+`
 
 function App() {
+  const [markdownText, setMarkdownText] = useState(markdownBanner);
+
+  const contextValue = {
+    markdownText,
+    setMarkdownText,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <MarkdownContext.Provider value={contextValue}>
+        <main className="main-page">
+          <Model type="banner" title="Modelo do Banner" />
+          <Banner markdownText={markdownText}/>
+        </main>
+      </MarkdownContext.Provider>
+    </>
   );
 }
 
