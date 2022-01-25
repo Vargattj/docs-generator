@@ -52,15 +52,38 @@ table {
     border: 1px solid black; padding:10px;
 }
 }
-.main-page {
+.project-page {
   padding: 40px 5%;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .title {
     color: #ff6d00;
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 16px;
+  }
+  .btn {
+    margin-top: 10px;
+    letter-spacing: 0.8px;
+    padding: 8px 15px;
+    background: #FF6D00;
+    border-radius: 24px;
+    border: 1px solid #B5B5B5;
+    border-color: #FF6D00;
+    color: #fff;
+    transition: .3s;
+    width: fit-content;
+    cursor: pointer;
+    min-width: 120px;
+    font: 600 12px/22px "Montserrat",sans-serif;
+    margin: 16px auto;
+    font-size: 12px;
+    &:hover {
+    background: #FFA000;
+    border-color: #FFA000;
+    }
   }
 `;
 

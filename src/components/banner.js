@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Tooltip from "./tooltip";
 
-const Banner = ({markdownText}) => {
-  
+const Banner = ({ markdownText }) => {
+
   function copyMarkdown() {
-    navigator.clipboard.writeText(markdownText)
+    navigator.clipboard.writeText(markdownText);
   }
   return (
     <Container>
@@ -16,7 +17,11 @@ const Banner = ({markdownText}) => {
         children={markdownText}
         remarkPlugins={[remarkGfm]}
       />
-      <button className="copy-markdown" type="button" onClick={copyMarkdown}>Copiar Markdown</button>
+      <Tooltip text="Markdown Copiado!">
+        <button className="btn" type="button" onClick={copyMarkdown}>
+          Copiar Markdown
+        </button>
+      </Tooltip>
     </Container>
   );
 };
@@ -34,7 +39,7 @@ const Container = styled.section`
       background: #fff;
       box-shadow: 0px 0px 20px #00000014;
       border: 3px solid white;
-      &:first-child{
+      &:first-child {
         margin-bottom: 30px;
       }
       thead {
@@ -70,25 +75,21 @@ const Container = styled.section`
       }
     }
   }
-  .copy-markdown {
-    margin-top: 10px;
-    letter-spacing: 0.8px;
-    padding: 8px 15px;
-    background: #FF6D00;
-    border-radius: 24px;
-    border: 1px solid #B5B5B5;
-    border-color: #FF6D00;
-    color: #fff;
-    transition: .3s;
-    width: fit-content;
-    cursor: pointer;
-    min-width: 120px;
-    font: 600 12px/22px "Montserrat",sans-serif;
-    margin: 16px auto;
-    font-size: 12px;
-    &:hover {
-    background: #FFA000;
-    border-color: #FFA000;
+  .btn {
+    position: relative;
+    .tooltip {
+      position: absolute;
+      padding: 3px 7px;
+      border: 2px solid #fff;
+      border-radius: 3px;
+      position: absolute;
+      width: 100%;
+      font-size: 12px;
+      text-transform: capitalize;
+      background-color: #707070;
+      color: #fff;
+      top: 50px;
+      left: 0;
     }
   }
 `;

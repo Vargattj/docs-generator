@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
@@ -9,6 +9,7 @@ import markdownContext from "../markdownContext";
 function Model(props) {
   const { register, handleSubmit } = useForm();
   const { setMarkdownText } = useContext(markdownContext);
+  const [clearFields, setClearFields] = useState(false);
 
   const onSubmit = (data) => {
     const markdownBanner = `
@@ -32,11 +33,10 @@ function Model(props) {
     if (data) {
       setMarkdownText(markdownBanner);
     }
-   if('functional_' + data.name === ":no_entry:"){
-     data.description = 'Não utilizado'
-   }
-    console.log(data);
   };
+  function handleClearFields() {
+    setClearFields(true);
+  }
 
   return (
     <ModelContainer>
@@ -90,7 +90,7 @@ function Model(props) {
                   name="cadastro_admin"
                   placeholder="link admin"
                 />
-                   <textarea
+                <textarea
                   {...register("cadastro_pagina")}
                   wrap="nowrap"
                   // wrap="none"
@@ -116,7 +116,10 @@ function Model(props) {
           <div className="body">
             <ul className="column">
               {bannerFields.map((el, i) => {
-                const functionalName = 'functional_'+ el.name;
+                const functionalName = "functional_" + el.name;
+                if (clearFields === true) {
+                  el.orientation = "";
+                }
                 return (
                   <li className="row" key={el.id}>
                     <label htmlFor={el.id} className="doubt">
@@ -155,6 +158,9 @@ function Model(props) {
               })}
             </ul>
           </div>
+          <button className="btn" onClick={handleClearFields} type="button">
+            Limpar Campos
+          </button>
         </ModelTable>
       </form>
     </ModelContainer>
