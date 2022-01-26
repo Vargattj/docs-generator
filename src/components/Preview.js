@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Tooltip from "./tooltip";
 
-const Banner = ({ markdownText }) => {
+const Preview = ({ markdownText }) => {
 
   function copyMarkdown() {
     navigator.clipboard.writeText(markdownText);
@@ -94,4 +94,4 @@ const Container = styled.section`
   }
 `;
 
-export default Banner;
+export default Preview;

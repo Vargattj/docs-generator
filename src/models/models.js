@@ -1,4 +1,4 @@
-export const bannerFields = [
+export const banner = [
   {
     id: 0,
     name: "image",
@@ -6,7 +6,13 @@ export const bannerFields = [
     functional: ":large_blue_circle:",
     orientation: "Dimensão sugerida 2280x1010 pixels",
   },
-  { id: 1, label: "Título", name: 'title', functional: ":black_circle:", orientation: "Alt da imagem" },
+  {
+    id: 1,
+    label: "Título",
+    name: "title",
+    functional: ":black_circle:",
+    orientation: "Alt da imagem",
+  },
   {
     id: 2,
     name: "subtitle",
@@ -51,8 +57,27 @@ export const bannerFields = [
   },
 ];
 
-export const subtitles = [
-  { icon: "🔵", title: "Campo funcional", emote: ':large_blue_circle:' },
-  { icon: "⛔", title: "Controle interno", emote: ':no_entry:' },
-  { icon: "⚫", title: "Campo obrigatório no admin", emote: ':black_circle:' },
+export const modelInfos = [
+  {
+    id: 0,
+    name: "onde_cadastrar",
+    label: "Onde cadastrar",
+    orientation_banner: "Banners",
+    orientation_menu: "menus",
+  },
+  {
+    id: 1,
+    name: "onde_sera_exibido",
+    label: "Onde será exibido",
+    orientation_banner:
+      "Banner principal abaixo do header, ocupa 100% da largura da tela",
+    orientation_menu: "",
+  },
+  {
+    id: 2,
+    name: "cadastro_exemplo",
+    label: "Cadastro exemplo em staging",
+    cadastro_exemplo_admin: "",
+    cadastro_exemplo_pagina: "",
+  },
 ];

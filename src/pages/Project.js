@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Banner from "../components/banner";
+import Preview from "../components/Preview";
 import Model from "../components/model";
 import MarkdownContext from "../markdownContext";
-import { bannerFields } from "../models/bannerFields";
+import { banner } from "../models/models";
 
-const markdownText = bannerFields.map((field, i)=> {
+const markdownText = banner.map((field, i)=> {
   if(field.functional === ":no_entry:"){
     field.orientation = "Não utilizado"
   }
@@ -37,7 +37,7 @@ function Project() {
       <MarkdownContext.Provider value={contextValue}>
         <main className="project-page">
           <Model type="banner" title="Modelo do Banner" />
-          <Banner markdownText={markdownText}/>
+          <Preview markdownText={markdownText}/>
         </main>
       </MarkdownContext.Provider>
     </>
