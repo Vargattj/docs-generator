@@ -57,6 +57,52 @@ export const banner = [
   },
 ];
 
+export const menu = [
+  {
+    id: 0,
+    name: "title",
+    label: "Título",
+    functional: ":black_circle:",
+    orientation: "Título do menu",
+  },
+  {
+    id: 1,
+    label: "Tooltip",
+    name: "tooltip",
+    functional: ":large_blue_circle:",
+    orientation: " A imagem do submenu deve ser cadastrada em um banner na mesma posição que está no tooltip do menu",
+  },
+  {
+    id: 2,
+    name: "description",
+    label: "Descrição",
+    functional: ":no_entry:",
+    orientation: "Não utilizado",
+  },
+  {
+    id: 3,
+    name: "position",
+    label: "Posição",
+    functional: ":black_circle:",
+    orientation: "principal",
+  },
+  {
+    id: 4,
+    name: "external",
+    label: "Externo?",
+    functional: ":large_blue_circle:",
+    orientation: "Selecionar se o link do menu deve abrir em outra aba",
+  },
+  {
+    id: 5,
+    name: "url",
+    label: "URL",
+    functional: ":black_circle:",
+    orientation: "Link de direcionamento",
+  },
+];
+
+
 export const modelInfos = [
   {
     id: 0,
@@ -81,3 +127,4 @@ export const modelInfos = [
     cadastro_exemplo_pagina: "",
   },
 ];
+

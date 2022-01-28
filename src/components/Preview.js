@@ -3,9 +3,42 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Tooltip from "./tooltip";
+// import { model } from "../models/models";
 
-const Preview = ({ markdownText }) => {
 
+
+const Preview = ({ markdownText, model }) => {
+
+  const markdown = model
+  .map((field, i) => {
+    if (field.functional === ":no_entry:") {
+      field.orientation = "Não utilizado";
+    }
+    return `| **${field.label}**    | ${field.functional}  |  ${field.orientation}|`;
+  })
+  .join("\r\n");
+
+const defaultMarkdown = `
+
+***Informações:***
+
+| Dúvida                          | Instrução                                                        |
+| ------------------------------- | ---------------------------------------------------------------- |
+| **Onde cadastrar**              | Banners                                                          |
+| **Onde será exibido**           | Banner principal abaixo do header, ocupa 100% da largura da tela |
+| **Cadastro exemplo em staging** | [Admin](#) / [Página](#)   
+
+***Orientações sobre os campos:***
+
+| Campo         | Funcional?          | Orientação                                             |
+| ------------- | ------------------- | ------------------------------------------------------ |
+${markdown}
+`;
+
+  if(markdownText === ""){
+    markdownText = defaultMarkdown;
+  }
+  
   function copyMarkdown() {
     navigator.clipboard.writeText(markdownText);
   }

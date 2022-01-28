@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormInput = ({ register, id, name, rows }, ...inputsProps) => {
+const FormInput = ({ register, id, name, rows, defaultValue }, ...inputsProps) => {
   return (
     <textarea
       {...register(`${name}`)}
@@ -9,6 +9,7 @@ const FormInput = ({ register, id, name, rows }, ...inputsProps) => {
       type="text"
       id={id}
       name={name}
+      defaultValue={defaultValue}
       rows={rows}
       {...inputsProps}
     />

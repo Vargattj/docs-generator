@@ -2,7 +2,9 @@ import React from "react";
 
 const defaultContext = {
   markdownText: '',
+  markdownMenu: '',
   setMarkdownText: () => {},
+  setMarkdownMenu: () => {},
 };
 
 
